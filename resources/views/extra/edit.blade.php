@@ -7,10 +7,10 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
-                        <h2>Edit pizza</h2>
+                        <h2>Edit extra</h2>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('pizza.index') }}"> Back</a>
+                        <a class="btn btn-primary" href="{{ route('extras.index') }}"> Back</a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 </div>
             @endif
           
-            <form action="{{ route('pizza.update',$pizza->id) }}" method="POST">
+            <form action="{{ route('extras.update',$extra->id) }}" method="POST">
                 @csrf
                 @method('PUT')
            
@@ -34,19 +34,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Name:</strong>
-                            <input type="text" name="name" value="{{ $pizza->name }}" class="form-control" placeholder="Name">
+                            <input type="text" name="name" value="{{ $extra->name }}" class="form-control" placeholder="Name">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Prezzo:</strong>
-                            <input type="text" name="price" value="{{ $pizza->price }}" class="form-control" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Ingredienti:</strong>
-                            <textarea class="form-control" style="height:150px" name="ingrediants" placeholder="Detail">{{ $pizza->ingrediants }}</textarea>
+                            <input type="text" name="price" value="{{ $extra->price }}" class="form-control" placeholder="Name">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

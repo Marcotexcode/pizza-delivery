@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\ExtraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,9 @@ Route::get('/', function () {
 });
 
   
-Route::resource('pizze', PizzaController::class);
 Auth::routes();
+Route::resource('pizza', PizzaController::class);
+Route::resource('extras', ExtraController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');

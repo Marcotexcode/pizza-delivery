@@ -14,7 +14,9 @@ class ExtraController extends Controller
      */
     public function index()
     {
-        //
+        $extra = Extra::all();
+    
+        return view('extra.index',compact('extra'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ExtraController extends Controller
      */
     public function create()
     {
-        //
+        return view('extra.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class ExtraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required'
+        ]);
+    
+        Extra::create($request->all());
+     
+        return redirect()->route('extras.index');
     }
 
     /**
@@ -46,7 +55,8 @@ class ExtraController extends Controller
      */
     public function show(Extra $extra)
     {
-        //
+        return view('extra.show',compact('extra'));
+        
     }
 
     /**
@@ -57,7 +67,8 @@ class ExtraController extends Controller
      */
     public function edit(Extra $extra)
     {
-        //
+        return view('extra.edit',compact('extra'));
+        
     }
 
     /**
@@ -69,7 +80,14 @@ class ExtraController extends Controller
      */
     public function update(Request $request, Extra $extra)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required'
+        ]);
+    
+        $extra->update($request->all());
+    
+        return redirect()->route('extras.index');
     }
 
     /**
@@ -80,6 +98,8 @@ class ExtraController extends Controller
      */
     public function destroy(Extra $extra)
     {
-        //
+        $extra->delete();
+    
+        return redirect()->route('extras.index');
     }
 }

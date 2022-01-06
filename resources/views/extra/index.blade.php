@@ -7,7 +7,7 @@
                 <div class="row my-3">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-right">
-                            <a class="btn btn-success" href="{{ route('pizza.create') }}"> Create New Product</a>
+                            <a class="btn btn-success" href="{{ route('extras.create') }}"> Create New Product</a>
                         </div>
                     </div>
                 </div>
@@ -17,18 +17,16 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Prezzo €</th>
-                                <th>Ingredienti</th>
                                 <th width="280px">Action</th>
                             </tr>
-                            @foreach ($pizze as $pizza)
+                            @foreach ($extra as $extras)
                                 <tr>
-                                    <td>{{ $pizza->name }}</td>
-                                    <td>{{ $pizza->price }}</td>
-                                    <td>{{ $pizza->ingrediants }}</td>
+                                    <td>{{ $extras->name }}</td>
+                                    <td>{{ $extras->price }}</td>
                                     <td>
-                                        <form action="{{ route('pizza.destroy', $pizza->id) }}" method="POST">
-                                            <a class="btn btn-info" href="{{ route('pizza.show', $pizza->id) }}">Show</a>
-                                            <a class="btn btn-primary" href="{{ route('pizza.edit', $pizza->id) }}">Edit</a>
+                                        <form action="{{ route('extras.destroy', $extras->id) }}" method="POST">
+                                            <a class="btn btn-info" href="{{ route('extras.show', $extras->id) }}">Show</a>
+                                            <a class="btn btn-primary" href="{{ route('extras.edit', $extras->id) }}">Edit</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"  class="btn btn-danger">Delete</button>

@@ -26,6 +26,17 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                {{-- **************** STUDIARE COME FUNZIONA AUTH ********************** --}}
+                @if (Auth::user())
+                    <a class="navbar-brand" href="{{ url('/pizza') }}">
+                        Pizze
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/extras') }}">
+                        Extra
+                    </a>
+                @endif
+                {{-- **************** STUDIARE COME FUNZIONA AUTH ********************** --}}
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

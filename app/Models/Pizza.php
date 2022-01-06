@@ -12,7 +12,7 @@ class Pizza extends Model
     protected $fillable = [
         'name',
         'ingrediants',
-        'price'
+        'price',
     ];
 
     public function row_orders()

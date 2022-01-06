@@ -45,7 +45,7 @@ class PizzaController extends Controller
     
         Pizza::create($request->all());
      
-        return redirect()->route('pizze.index');
+        return redirect()->route('pizza.index');
     }
 
     /**
@@ -56,7 +56,7 @@ class PizzaController extends Controller
      */
     public function show(Pizza $pizza)
     {
-        return view('pizza.show',compact('pizza'));
+        return view('pizze.show',compact('pizza'));
     }
 
     /**
@@ -87,7 +87,7 @@ class PizzaController extends Controller
     
         $pizza->update($request->all());
     
-        return redirect()->route('pizze.index');
+        return redirect()->route('pizza.index');
     }
 
     /**
@@ -100,6 +100,7 @@ class PizzaController extends Controller
     {
         $pizza->delete();
     
-        return redirect()->route('pizze.index');
+        return redirect()->route('pizza.index');
     }
+    
 }
