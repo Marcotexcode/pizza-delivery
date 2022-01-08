@@ -37,6 +37,7 @@
                                 </tr>
                             @endforeach
                         </table>
+                        {!! $pizze->links() !!}
                     </div>
                 </div>
             </div>
