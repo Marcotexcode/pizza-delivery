@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pizza;
+use App\Models\Extra;
+
+use App\Models\RowOrder;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ElencoPizze = Pizza::all();
+        $ElencoExtra = Extra::all();
+        return view('home',compact('ElencoPizze','ElencoExtra'));
     }
 }

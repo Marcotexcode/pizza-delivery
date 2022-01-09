@@ -26,6 +26,9 @@
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Home
                 </a>
+                <a class="navbar-brand" href="{{ url('/carrello') }}">
+                    Carrello
+                </a>
                 {{-- **************** STUDIARE COME FUNZIONA AUTH ********************** --}}
                 @can('administer')
                     <a class="navbar-brand" href="{{ url('/pizza') }}">

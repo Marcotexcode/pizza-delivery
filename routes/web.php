@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\ExtraController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RowOrderController;
+
 
 
 /*
@@ -19,14 +21,19 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
+Route::get('/carrello', function () {
+    return view('carrello.index');
+});
   
 Auth::routes();
 Route::resource('pizza', PizzaController::class);
 Route::resource('extras', ExtraController::class);
 Route::resource('utente', UserController::class);
+Route::resource('ordine', RowOrderController::class);
+
+
 
 
 
