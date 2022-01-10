@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col text-center my-4 text-danger">
+            AGGIUNGERE FORM PER DATI UTENTE
+        </div>
+    </div>
+    <div class="row">
         <div class="col d-flex justify-content-between flex-wrap">
             <table class="table">
                 <thead>
@@ -23,7 +28,6 @@
                         <td>
                             <a class="btn btn-primary" href="">Modifica</a>
                             <a class="btn btn-primary" href="">Elimina</a>
-                            <a class="btn btn-primary" href="">Invia</a>
                         </td>
                     </tr>
                     <tr>
@@ -34,11 +38,11 @@
                         <td>
                             <a class="btn btn-primary" href="">Modifica</a>
                             <a class="btn btn-primary" href="">Elimina</a>
-                            <a class="btn btn-primary" href="">Invia</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <a class="btn btn-primary" href="">Invia</a>
         </div>
     </div>
 </div>
