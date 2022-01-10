@@ -33,6 +33,9 @@ Route::resource('extras', ExtraController::class);
 Route::resource('utente', UserController::class);
 Route::resource('ordine', RowOrderController::class);
 
+Route::get('pippo', [RowOrderController::class, 'sessionUser'] );
+
+
 
 
 

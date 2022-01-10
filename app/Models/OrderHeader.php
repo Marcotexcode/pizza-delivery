@@ -19,4 +19,9 @@ class OrderHeader extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function row_orders()
+    {
+        return $this->hasMany(RowOrder::class);
+    }
 }
