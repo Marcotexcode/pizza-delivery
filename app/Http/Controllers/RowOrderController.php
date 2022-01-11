@@ -44,34 +44,29 @@ class RowOrderController extends Controller
      */
     public function store(Request $request)
     {   
-        // se l'utente ha il carrello
-        $testata = OrderHeader::firstOrNew(['user_id' => Auth::user()->id, 'type' => 0]);
         
-        // se l'utente non ha il carrello l'ho crea
-        $testata = OrderHeader::firstOrCreate(['user_id' => Auth::user()->id,'type' => 0]);
 
-        // Prende l'id el carrello (order_header_id)
-        $orderHeaders = OrderHeader::where('user_id', Auth::user()->id)->pluck('id')->first();
+        // se l'utente non ha il carrello l'ho crea
+        $testata = OrderHeader::firstOrCreate(['user_id' => Auth::user()->id, 'type' => 0]);
         
         // Quando il carello (order_headers) è creato aggiungere una pizza con la riga
         // Crea la riga dell ordine (RowOrder)
         $order = new RowOrder;
-        $order->order_header_id = $orderHeaders;
+        $order->order_header_id = $testata->id;
         $order->pizza_id = $request->pizza_id;
         $order->quantity = $request->quantity;
         $order->save();
 
-        
         // Inserire gli extra alla riga se vengono scelti 
-        $prova = $request->extra_id;
-
-        dd($prova);
-
         if($request->extra_id) {
-            $orderExtra = new RowOrderExtra;
-            $orderExtra->row_order_id = $order->id;
-            $orderExtra->extra_id = $request->extra_id;
-            $orderExtra->save();
+            $prova = $request->extra_id;
+
+            foreach ($prova as $prov) {
+                $orderExtra = new RowOrderExtra;
+                $orderExtra->row_order_id = $order->id;
+                $orderExtra->extra_id = $prov;
+                $orderExtra->save();
+            }
         }
 
         return redirect()->route('home');
