@@ -13,6 +13,7 @@ class OrderHeader extends Model
         'user_id',
         'address',
         'phone',
+        'type'
     ];
 
     public function user()

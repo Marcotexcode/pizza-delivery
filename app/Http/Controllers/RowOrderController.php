@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\RowOrder;
 use App\Models\RowOrderExtra;
@@ -42,27 +43,29 @@ class RowOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $utente = User::all();
-
-        dd($utente->id);
-        //$carrelloUtente = $utente->id;
-
-        session()->put('carrelloUtente', $carrelloUtente);
-
-        $carrelloUtente = session('carrelloUtente');
-
-        //dd($carrelloUtente);
-        // RowOrder::create($request->all());
-        // $orderHeader = new OrderHeader;
-        // $orderHeader->id = $request->id;
-        // $orderHeader->save();
+    {   
+        // se l'utente ha il carrello
+        $testata = OrderHeader::firstOrNew(['user_id' => Auth::user()->id, 'type' => 0]);
         
+        // se l'utente non ha il carrello l'ho crea
+        $testata = OrderHeader::firstOrCreate(['user_id' => Auth::user()->id,'type' => 0]);
+
+        // Prende l'id el carrello (order_header_id)
+        $orderHeaders = OrderHeader::where('user_id', Auth::user()->id)->pluck('id')->first();
+        
+        // Quando il carello (order_headers) è creato aggiungere una pizza con la riga
+        // Crea la riga dell ordine (RowOrder)
         $order = new RowOrder;
-        $order->order_header_id = $request->id;
+        $order->order_header_id = $orderHeaders;
         $order->pizza_id = $request->pizza_id;
         $order->quantity = $request->quantity;
         $order->save();
+
+        
+        // Inserire gli extra alla riga se vengono scelti 
+        $prova = $request->extra_id;
+
+        dd($prova);
 
         if($request->extra_id) {
             $orderExtra = new RowOrderExtra;
@@ -73,16 +76,6 @@ class RowOrderController extends Controller
 
         return redirect()->route('home');
     }
-
-    // public function sessionUser(Request $request)
-    // {
-        
-    //     $carrelloUtente = $request->input('nomeProdotto');
-
-    //     session()->put('carrelloUtente', $carrelloUtente);
-
-    //     return redirect()->route('home');
-    // }
 
     /**
      * Display the specified resource.
