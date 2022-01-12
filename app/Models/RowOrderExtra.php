@@ -14,13 +14,13 @@ class RowOrderExtra extends Model
         'extra_id',
     ];
 
-    public function order_header()
+    public function row_order()
     {
-        return $this->belonsTo(OrderHeader::class);
+        return $this->belongsTo(RowOrder::class);
     }
 
     public function extra()
     {
-        return $this->belonsTo(Extra::class);
+        return $this->belongsTo(Extra::class);
     }
 }

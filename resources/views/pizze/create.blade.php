@@ -13,13 +13,10 @@
                         <a class="btn btn-primary" href="{{ route('pizza.index') }}"> Back</a>
                     </div>
                 </div>
-            </div>
-               
-               
+            </div>       
             <form action="{{ route('pizza.store') }}" method="POST">
                 @csrf
-              
-                 <div class="row">
+                <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Name:</strong>
@@ -39,13 +36,11 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                </div>
-               
+                </div>              
             </form>
         </div>
     </div>
 </div>
-
 @endsection

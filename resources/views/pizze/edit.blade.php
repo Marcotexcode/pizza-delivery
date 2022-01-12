@@ -13,8 +13,7 @@
                         <a class="btn btn-primary" href="{{ route('pizza.index') }}"> Back</a>
                     </div>
                 </div>
-            </div>
-           
+            </div>        
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -25,7 +24,6 @@
                     </ul>
                 </div>
             @endif
-
             <form action="{{ route('pizza.update',$pizza->id) }}" method="POST">
                 @csrf
                 @method('PUT')  
@@ -56,5 +54,4 @@
         </div>
     </div>
 </div>
-    
 @endsection

@@ -8,7 +8,6 @@
                     <form action="{{ route('ordine.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="pizza_id" value="{{$pizze->id}}">
-
                         <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="https://d1e3z2jco40k3v.cloudfront.net/-/media/drog19/recipe-images/pizza-margherita-con-basilico_2000.jpg?rev=c0ef67e2f4684f9dbbcf1a54188cc5b0&vd=20200707T052020Z&hash=097A78228B5887F0247E9EFAB27CE958" alt="Card image cap">
                             <div class="card-body p-1 text-center">
@@ -41,27 +40,8 @@
         </div>
         <div class="row">
             <div class="col">
-                    <h3 class="my-4">Totale carrello: {{$righeOrdine}}</h3>
+                <h3 class="my-4">Totale carrello: {{$righeOrdine}}</h3>
             </div>
         </div>
     </div>
 @endsection
-
-
-{{-- <div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">{{ __('Dashboard') }}</div>
-
-            <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                {{ __('You are logged in!') }}
-            </div>
-        </div>
-    </div>
-</div> --}}

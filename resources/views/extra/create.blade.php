@@ -13,12 +13,9 @@
                         <a class="btn btn-primary" href="{{ route('extras.index') }}"> Back</a>
                     </div>
                 </div>
-            </div>
-               
-               
+            </div>           
             <form action="{{ route('extras.store') }}" method="POST">
-                @csrf
-              
+                @csrf  
                  <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -33,10 +30,9 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-               
             </form>
         </div>
     </div>

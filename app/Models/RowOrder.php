@@ -12,7 +12,6 @@ class RowOrder extends Model
     protected $fillable = [
         'order_header_id',
         'pizza_id',
-        'extra_id',
         'quantity',
     ];
 
@@ -23,11 +22,16 @@ class RowOrder extends Model
 
     public function pizza()
     {
-        return $this->belonsTo(Pizza::class);
+        return $this->belongsTo(Pizza::class);
     }
 
     public function extra()
     {
-        return $this->belonsTo(Extra::class);
+        return $this->belongsTo(Extra::class);
+    }
+    
+    public function row_order_extras()
+    {
+        return $this->hasMany(RowOrderExtra::class);
     }
 }

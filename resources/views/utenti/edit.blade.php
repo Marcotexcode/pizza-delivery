@@ -14,7 +14,6 @@
                     </div>
                 </div>
             </div>
-           
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -24,12 +23,10 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
-          
+            @endif 
             <form action="{{ route('utente.update', $user->id) }}" method="POST">
                 @csrf
-                @method('PUT')
-           
+                @method('PUT')     
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -53,10 +50,8 @@
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-           
             </form>
         </div>
     </div>
 </div>
-    
 @endsection
