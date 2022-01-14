@@ -35,6 +35,18 @@
                             <textarea class="form-control" style="height:150px" name="ingrediants"></textarea>
                         </div>
                     </div>
+                    <div class="card-text">
+                        @foreach ($extraIndex as $index)
+                            <div class="form-check">
+                                <input class="form-check-input" name="extra_id[]" value="{{$index->id}}" type="checkbox" id="extraIndex">
+                                <label for="extraIndex" class="form-check-label">
+                                    {{$index->name}}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                    
+
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

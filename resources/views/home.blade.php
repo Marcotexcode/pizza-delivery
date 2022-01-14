@@ -2,6 +2,20 @@
 
 @section('content')
     <div class="container">
+        
+        <div class="row">
+            <div class="col my-5">
+                <form action="{{route('filtroName')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Trova pizza</label>
+                      <input type="text" name="namePizza" class="form-control my-3" id="exampleInputEmail1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col d-flex justify-content-between flex-wrap">
                 @foreach ($ElencoPizze as $pizze)
@@ -38,6 +52,7 @@
                 @endforeach     
             </div>
         </div>
+        {!! $ElencoPizze->links() !!} 
         <div class="row">
             <div class="col">
                 <h3 class="my-4">Totale carrello: {{$righeOrdine}}</h3>

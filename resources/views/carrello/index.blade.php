@@ -23,7 +23,10 @@
                                 {{-- $rigaOrdine fare la  relazione e dato che e una collection
                                 usare il foreach --}}
                                 @foreach ($rigaOrdine->row_order_extras as $rigaOrdneExtra)
-                                    {{$rigaOrdneExtra->extra->name}},   
+                                {{$rigaOrdneExtra->extra->name}}{{-- 
+                                --}}@if (!$loop->last){{--
+                                --}},  
+                                    @endif
                                 @endforeach
                             </td>
                             <td>{{$rigaOrdine->pizza->price}}</td>

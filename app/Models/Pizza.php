@@ -10,6 +10,8 @@ class Pizza extends Model
     use HasFactory;
    
     protected $fillable = [
+        'id',
+        'pizzas',
         'name',
         'ingrediants',
         'price',
@@ -20,8 +22,8 @@ class Pizza extends Model
         return $this->hasMany(RowOrder::class);
     }
 
-    public function pizza_extras()
-    {
-        return $this->morphToMany(PizzaExtra::class);
+    public function extras()
+    {   
+        return $this->belongsToMany(Extra::class, 'pizza_extras', 'pizza_id', 'extra_id');
     }
 }

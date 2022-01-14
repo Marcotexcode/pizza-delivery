@@ -14,16 +14,6 @@
                     </div>
                 </div>
             </div>        
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <form action="{{ route('pizza.update',$pizza->id) }}" method="POST">
                 @csrf
                 @method('PUT')  
@@ -44,6 +34,19 @@
                         <div class="form-group">
                             <strong>Ingredienti:</strong>
                             <textarea class="form-control" style="height:150px" name="ingrediants" placeholder="Detail">{{ $pizza->ingrediants }}</textarea>
+                        </div>
+                    </div>
+                    <h5 class="my-3">Extra</h5>
+                    <div class="row">
+                        <div class="col">
+                            @foreach ($elenchiExtra as $elencoExtra)
+                            <div class="form-check">
+                                <input {{ in_array( $elencoExtra->id, $extraIdEsistenti ) ? 'checked' : '' }} type="checkbox" value="{{$elencoExtra->id}}" name="extra_id[]" id="elencoExtra">
+                                <label class="form-check-label" for="elencoExtra">
+                                    {{$elencoExtra->name}}
+                                </label>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

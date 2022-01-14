@@ -14,14 +14,14 @@ class PizzaExtra extends Model
         'extra_id'
     ];
 
-    public function pizzas()
-    {
-        return $this->belongsToMany(Pizza::class);
-    }
+    // public function pizzas()
+    // {
+    //     return $this->belongsToMany(Pizza::class);
+    // }
 
-    public function extras()
-    {
-        return $this->belongsToMany(Extra::class);
-    }
+    // public function extras()
+    // {
+    //     return $this->belongsToMany(Extra::class);
+    // }
     
 }

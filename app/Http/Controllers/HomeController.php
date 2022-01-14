@@ -17,11 +17,17 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $ElencoPizze = Pizza::all();
+        $ElencoPizze = Pizza::query();
         $ElencoExtra = Extra::all();
         
+        $filtriDate = session('filtriName');
+
+        if($filtriDate) {
+            $ElencoPizze = $ElencoPizze->where('name', 'LIKE', "%{$filtriDate}%");
+        }
+
         // Vedere se l'utente ha un carrello
         $carrelli = OrderHeader::where('type', 0)->where('user_id', Auth::user()->id)->get();
 
@@ -33,7 +39,15 @@ class HomeController extends Controller
             $righeOrdine = $righeOrdine + $carrello->row_orders->sum('quantity');  
         } 
 
+        $ElencoPizze = $ElencoPizze->paginate(2);
         return view('home',compact('ElencoPizze','ElencoExtra','righeOrdine'));
+    }
+
+    public function filtroName(Request $request)
+    {
+        session()->put('filtriName', $request->namePizza);
+        
+        return redirect()->route('home');
     }
     
 }

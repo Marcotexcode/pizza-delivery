@@ -21,9 +21,8 @@ class CartController extends Controller
         // Controllo se ce il carrello senno lo crea
         $carrello = OrderHeader::firstOrCreate(['user_id' => Auth::user()->id, 'type' => 0]);
 
-        // Dal carrello passa alla tabella row_orders
         $rigaOrdini = $carrello->row_orders;
-
+        
         return view('carrello.index',compact('rigaOrdini'));
     }
 
@@ -33,7 +32,6 @@ class CartController extends Controller
         $elencoExtra = Extra::all();
 
         $extraIdEsistenti = collect($rigaOrdine->row_order_extras)->pluck('extra_id')->toArray();
-
         return view('carrello.edit', compact('rigaOrdine','elencoExtra','extraIdEsistenti'));
     }
 
@@ -43,8 +41,8 @@ class CartController extends Controller
 
         $rigaOrdine->update($request->all());
 
-        // recupera tutti i record in cui il valore colonna 'row_order_id' sia uguale al id 
-        // riga_order e lo elimina 
+        // recupera tutti i record in cui il valore colonna 'row_order_id' sia uguale al id
+        // riga_order e lo elimina
         $deleted = RowOrderExtra::where('row_order_id', $id)->delete();
 
         // se la request extra_id e stata modificata
@@ -59,7 +57,7 @@ class CartController extends Controller
                 $orderExtra->save();
             }
         }
-        
+
         return redirect()->route('carrello.index');
     }
 

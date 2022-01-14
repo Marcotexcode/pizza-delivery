@@ -11,9 +11,10 @@ class Extra extends Model
 
     protected $fillable = [
         'name',
-        'price'
+        'price',
+        'pizza_extras'
     ];
-
+    
     public function row_orders()
     {
         return $this->hasMany(RowOrder::class);
@@ -24,9 +25,9 @@ class Extra extends Model
         return $this->hasMany(RowOrderExtra::class);
     }
 
-    public function pizza_extras()
-    {
-        return $this->morphToMany(PizzaExtra::class);
-    }
+    // public function pizzas()
+    // {
+    //     return $this->belongsToMany(Extra::class, 'pizza_extras', 'pizza_id', 'extra_id');
+    // }
     
 }
