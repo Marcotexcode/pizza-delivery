@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RowOrder;
 use App\Models\OrderHeader;
 use App\Models\Extra;
+use App\Models\Pizza;
 use App\Models\RowOrderExtra;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,13 @@ class CartController extends Controller
         $elencoExtra = Extra::all();
 
         $extraIdEsistenti = collect($rigaOrdine->row_order_extras)->pluck('extra_id')->toArray();
-        return view('carrello.edit', compact('rigaOrdine','elencoExtra','extraIdEsistenti'));
+        
+
+        $extra = Extra::where('id', $extraIdEsistenti)->get();
+
+        
+
+        return view('carrello.edit', compact('rigaOrdine','elencoExtra','extraIdEsistenti','extra'));
     }
 
     public function update(Request $request, $id)

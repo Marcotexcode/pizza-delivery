@@ -35,15 +35,13 @@ class PizzaController extends Controller
 
         $pizza = Pizza::create($request->all());
         
-        if ($request->extra_id) {
-            $idExtras = $request->extra_id;
-            
-            foreach ($idExtras as $idExtra) {
-                $pizzaExtra = new PizzaExtra;
-                $pizzaExtra->pizza_id = $pizza->id;
-                $pizzaExtra->extra_id = $idExtra;
-                $pizzaExtra->save();  
-            }
+        $idExtras = $request->input('extra_id', []);
+
+        foreach ($idExtras as $idExtra) {
+            $pizzaExtra = new PizzaExtra;
+            $pizzaExtra->pizza_id = $pizza->id;
+            $pizzaExtra->extra_id = $idExtra;
+            $pizzaExtra->save();  
         }
 
         return redirect()->route('pizza.index');
@@ -57,9 +55,7 @@ class PizzaController extends Controller
     public function edit(Pizza $pizza)
     { 
         $elenchiExtra = Extra::all();
-
-        $pizzaExtra = PizzaExtra::all();
-
+        
         $extraIdEsistenti = collect($pizza->extras)->pluck('id')->toArray();
 
         return view('pizze.edit',compact('pizza', 'elenchiExtra', 'extraIdEsistenti'));
@@ -95,6 +91,5 @@ class PizzaController extends Controller
         $pizza->delete();
     
         return redirect()->route('pizza.index');
-    }
-    
+    }  
 }

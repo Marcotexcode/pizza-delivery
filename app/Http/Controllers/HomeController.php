@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Pizza;
 use App\Models\Extra;
+use App\Models\PizzaExtra;
+
 use App\Models\OrderHeader;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +22,6 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $ElencoPizze = Pizza::query();
-        $ElencoExtra = Extra::all();
         
         $filtriDate = session('filtriName');
 
@@ -39,8 +40,9 @@ class HomeController extends Controller
             $righeOrdine = $righeOrdine + $carrello->row_orders->sum('quantity');  
         } 
 
-        $ElencoPizze = $ElencoPizze->paginate(2);
-        return view('home',compact('ElencoPizze','ElencoExtra','righeOrdine'));
+        $ElencoPizze = $ElencoPizze->paginate(4);
+
+        return view('home',compact('ElencoPizze','righeOrdine'));
     }
 
     public function filtroName(Request $request)

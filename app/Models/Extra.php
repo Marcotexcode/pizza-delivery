@@ -25,9 +25,9 @@ class Extra extends Model
         return $this->hasMany(RowOrderExtra::class);
     }
 
-    // public function pizzas()
-    // {
-    //     return $this->belongsToMany(Extra::class, 'pizza_extras', 'pizza_id', 'extra_id');
-    // }
+    public function pizzas()
+    {
+        return $this->belongsToMany(Extra::class, 'pizza_extras', 'pizza_id', 'extra_id');
+    }
     
 }

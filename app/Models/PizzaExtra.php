@@ -19,9 +19,9 @@ class PizzaExtra extends Model
     //     return $this->belongsToMany(Pizza::class);
     // }
 
-    // public function extras()
-    // {
-    //     return $this->belongsToMany(Extra::class);
-    // }
+    public function extras()
+    {
+        return $this->belongsToMany(Extra::class, 'pizza_extras', 'pizza_id', 'extra_id');
+    }
     
 }
