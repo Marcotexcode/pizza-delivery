@@ -33,6 +33,17 @@
                         {{ $pizza->ingrediants }}
                     </div>
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Extra:</strong>
+                        @foreach ($extraIdEsistenti as $item)
+                            {{ $item->name }}{{-- 
+                        --}}@if (!$loop->last){{--
+                        --}},  
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

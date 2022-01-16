@@ -49,7 +49,10 @@ class PizzaController extends Controller
 
     public function show(Pizza $pizza)
     {
-        return view('pizze.show',compact('pizza'));
+        $extraIdEsistenti = collect($pizza->extras);
+
+        //dd($extraIdEsistenti);
+        return view('pizze.show',compact('pizza','extraIdEsistenti'));
     }
 
     public function edit(Pizza $pizza)
@@ -57,7 +60,7 @@ class PizzaController extends Controller
         $elenchiExtra = Extra::all();
         
         $extraIdEsistenti = collect($pizza->extras)->pluck('id')->toArray();
-
+        
         return view('pizze.edit',compact('pizza', 'elenchiExtra', 'extraIdEsistenti'));
     }
 

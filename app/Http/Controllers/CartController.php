@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\RowOrder;
 use App\Models\OrderHeader;
 use App\Models\Extra;
-use App\Models\Pizza;
+use App\Models\PizzaExtra;
 use App\Models\RowOrderExtra;
-use Illuminate\Support\Facades\DB;
-
-
-use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -29,17 +28,17 @@ class CartController extends Controller
 
     public function edit($id)
     {
-        $rigaOrdine = RowOrder::find($id);
-        $elencoExtra = Extra::all();
+        $rigaOrdine = RowOrder::find($id);  
 
         $extraIdEsistenti = collect($rigaOrdine->row_order_extras)->pluck('extra_id')->toArray();
+
+        // Prendere  extra_id
+        $elencoddExtra = PizzaExtra::where('pizza_id',$rigaOrdine->pizza_id )->pluck('extra_id')->toArray();
+
+        // Prendere l'elenco che combacia con l'id di extra
+        $elencoExtraScelti = Extra::whereIn('id', $elencoddExtra)->get();
         
-
-        $extra = Extra::where('id', $extraIdEsistenti)->get();
-
-        
-
-        return view('carrello.edit', compact('rigaOrdine','elencoExtra','extraIdEsistenti','extra'));
+        return view('carrello.edit', compact('rigaOrdine','extraIdEsistenti', 'elencoExtraScelti'));
     }
 
     public function update(Request $request, $id)

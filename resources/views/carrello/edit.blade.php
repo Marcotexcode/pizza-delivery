@@ -23,18 +23,8 @@
                     <p class="card-text text-center">{{$rigaOrdine->pizza->ingrediants}}</p>
                     <h5 class="p-1 text-center">Extra</h5>
                     <div class="row">
-                        {{-- <div class="card-text">
-                            @foreach ($extraIdEsistenti as $elenco)
-                                <div class="form-check">
-                                    <input class="form-check-input"   name="extra_id[]" type="checkbox" value="{{$elenco->id}}" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        {{$elenco->name}}  
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>   --}}
                         <div class="card-text">
-                            @foreach ($elencoExtra as $elenco)
+                            @foreach ($elencoExtraScelti as $elenco)
                                 <div class="form-check">
                                     <input {{ in_array( $elenco->id, $extraIdEsistenti ) ? 'checked' : '' }} class="form-check-input"   name="extra_id[]" type="checkbox" value="{{$elenco->id}}" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
