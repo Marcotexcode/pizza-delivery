@@ -47,6 +47,7 @@ class HomeController extends Controller
 
     public function filtroName(Request $request)
     {
+        
         session()->put('filtriName', $request->namePizza);
         
         return redirect()->route('home');

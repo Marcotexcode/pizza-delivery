@@ -35,8 +35,6 @@ Route::resource('ordine', RowOrderController::class);
 Route::resource('carrello', CartController::class);
 
 
-
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('/filtro', [HomeController::class, 'filtroName'])->name('filtroName');
